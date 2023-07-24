@@ -43,24 +43,63 @@ function App() {
     e.preventDefault();
     let genpass = '';
     const check_fields = fieldsArray.filter(({ field }) => field);
-    let phraseAdded = false;
+    let phraseAdded = false; 
   
-    // no phrase?
-    let totalCharsNeeded = vals.length;
-  
-    // check if phrase length is too long for limit
+    const totalCharsNeeded = vals.length - check_fields.length;
     const phraseLength = vals.phrase.trim().length;
-    if (phraseLength >= vals.length) {
+  
+    // check if all parameters are unchecked and the phrase length doesn't match the limit
+    if (check_fields.length === 0 && phraseLength !== vals.length) {
+      toast.error('Please check more parameters or provide a phrase that matches the length limit.');
+      return;
+    }
+  
+    // if phraseLength equals character limit set by user, return phrase
+    if (phraseLength === vals.length) {
+      toast.error('A random password was not generated.');
+      setRes(vals.phrase);
+      return;
+    }
+  
+    // check if the phraseLength is too long to fit within the password length
+    if (phraseLength > vals.length) {
       toast.error('The phrase is too long to fit within the selected password length.');
       return;
     }
   
-    // if phrase, adjust totalCharsNeeded
-    if (phraseLength > 0) {
-      totalCharsNeeded -= phraseLength;
+    // if no phrase, generate random characters up to the length limit
+    if (phraseLength === 0) {
+      for (let i = 0; i < totalCharsNeeded; i++) {
+        const index = Math.floor(Math.random() * check_fields.length);
+        const letter = check_fields[index]?.getChar();
+  
+        if (letter) {
+          genpass += letter;
+        }
+      }
+    } else {
+      // if phrase, adjust the totalCharsNeeded
+      const adjustedTotalCharsNeeded = totalCharsNeeded - phraseLength;
+  
+      for (let i = 0; i < adjustedTotalCharsNeeded; i++) {
+        const index = Math.floor(Math.random() * check_fields.length);
+        const letter = check_fields[index]?.getChar();
+  
+        if (letter) {
+          genpass += letter;
+        }
+      }
+  
+      // add the phrase at specific locations in the password
+      const phrasePosition = Math.floor(Math.random() * (genpass.length + 1));
+      genpass =
+        genpass.slice(0, phrasePosition) +
+        vals.phrase +
+        genpass.slice(phrasePosition, genpass.length);
     }
   
-    for (let i = 0; i < totalCharsNeeded; i++) {
+    // ensure the password reaches the desired length by appending random characters if needed
+    while (genpass.length < vals.length) {
       const index = Math.floor(Math.random() * check_fields.length);
       const letter = check_fields[index]?.getChar();
   
@@ -69,21 +108,13 @@ function App() {
       }
     }
   
-    // add the phrase at a specific position
-    if (phraseLength > 0) {
-      const phrasePosition = Math.floor(Math.random() * (genpass.length + 1));
-      genpass =
-        genpass.slice(0, phrasePosition) +
-        vals.phrase +
-        genpass.slice(phrasePosition, genpass.length);
-    }
-  
     if (genpass) {
-      setRes(genpass);
+      setRes(genpass.slice(0, vals.length)); // if password too long, shorten it
     } else {
       toast.error('Please select at least one parameter or provide a phrase :(');
     }
   };
+  
 
   const handleClipboard = async () => {
     if (res) {
