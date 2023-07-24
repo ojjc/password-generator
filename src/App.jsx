@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { FaClipboard } from 'react-icons/fa';
-import { useForm } from './useform';
+import { useform } from './useform';
 import { getRanChar, getSym } from './utils';
 
 function App() {
-  const [vals, setVals] = useForm({
+  const [vals, setVals] = useform({
     length: 6,
     capper: true,
     smol: true,
