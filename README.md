@@ -31,3 +31,7 @@ Utilizes react-hot-toast in order to send notifications based on successful clip
 
 ![image](https://github.com/ojjc/password-generator/assets/137390275/6f897dc2-26b5-4ce0-a7a1-b6e24b3c2e63)
 ![image](https://github.com/ojjc/password-generator/assets/137390275/a3edcda5-df12-456a-97b6-435068efe126)
+
+If the phrase added by the user matches the character limit set by the user (what's the point of using this then???), return the phrase as it is
+
+![image](https://github.com/ojjc/password-generator/assets/137390275/4ff50c38-8cc1-4058-8188-2a160760f216)
