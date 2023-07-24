@@ -23,7 +23,7 @@ Using Phrase + all parameters
 
 ![image](https://github.com/ojjc/password-generator/assets/137390275/9bf0885c-90cc-48c1-92c0-159a9f4b3076)
 
-Max Character Limit can be set but for the sake of the CSS styling, it was set at 22 characters, which can obviously be changed
+Max Character Limit can be set but for the sake of the CSS styling that limited the size of the generated password line, it was set at 22 characters, which can obviously be changed
 
 ![image](https://github.com/ojjc/password-generator/assets/137390275/d5210eea-662d-4780-82dd-f60d632f797c)
 
