@@ -156,7 +156,6 @@ form {
 .field input {
   cursor: pointer;
 }
-
 button[type='submit'] {
   display: inline-block;
   width: 100%;
