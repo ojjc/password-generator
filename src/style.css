@@ -74,8 +74,65 @@ form {
   background-color: rgb(241, 241, 241);
   border-radius: 4px;
 }
-.field {
+.field input[type='text'] {
+  width: 150px;
   height: 40px;
+  outline: none;
+  border: none;
+  padding: 10px;
+  padding-right: 0px;
+  font-size: 16px;
+  background-color: rgb(241, 241, 241);
+  border-radius: 4px;
+  transform: translateX(6%);
+}
+.field input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.field input[type='checkbox'] + label {
+  position: relative;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.field input[type='checkbox'] + label:before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: #f1f1f1;
+  border: 2px solid #6b6b6b;
+  border-radius: 4px;
+}
+
+.field input[type='checkbox']:checked + label:before {
+  background-color: royalblue;
+  border-color: royalblue;
+}
+
+.field input[type='checkbox'] + label:after {
+  content: '\2713';
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: white;
+  display: none;
+}
+
+.field input[type='checkbox']:checked + label:after {
+  display: block;
+}
+.field {
+  height: 50px;
   margin-top: 5px;
   border-radius: 4px;
   display: flex;
