@@ -50,13 +50,15 @@ function App() {
   
     // check if all parameters are unchecked and the phrase length doesn't match the limit
     if (check_fields.length === 0 && phraseLength !== vals.length) {
-      toast.error('Please check more parameters or provide a phrase that matches the length limit.');
+      toast.error('Please check at least one parameter or provide a phrase that matches the length limit');
       return;
     }
   
     // if phraseLength equals character limit set by user, return phrase
     if (phraseLength === vals.length) {
-      toast.error('A random password was not generated.');
+      toast('A random password was not generated! 💀💀💀💀💀', {
+        icon: '😱',
+      });
       setRes(vals.phrase);
       return;
     }
