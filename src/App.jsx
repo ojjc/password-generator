@@ -155,7 +155,6 @@ function App() {
               />
             </div>
             <div className="field">
-              <label htmlFor="capper">Upper Case</label>
               <input
                 type="checkbox"
                 id="capper"
@@ -163,9 +162,9 @@ function App() {
                 checked={vals.capper}
                 onChange={setVals}
               />
+              <label htmlFor="capper">Upper Case</label>
             </div>
             <div className="field">
-              <label htmlFor="smol">Lower Case</label>
               <input
                 type="checkbox"
                 id="smol"
@@ -173,9 +172,9 @@ function App() {
                 checked={vals.smol}
                 onChange={setVals}
               />
+              <label htmlFor="smol">Lower Case</label>
             </div>
             <div className="field">
-              <label htmlFor="num">Number</label>
               <input
                 type="checkbox"
                 id="num"
@@ -183,9 +182,9 @@ function App() {
                 checked={vals.num}
                 onChange={setVals}
               />
+              <label htmlFor="num">Number</label>
             </div>
             <div className="field">
-              <label htmlFor="sym">Symbol</label>
               <input
                 type="checkbox"
                 id="sym"
@@ -193,6 +192,7 @@ function App() {
                 checked={vals.sym}
                 onChange={setVals}
               />
+              <label htmlFor="sym">Symbol</label>
             </div>
             <div className="field">
               <label htmlFor="phrase">Phrase</label>
